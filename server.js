@@ -29,11 +29,15 @@ var Tables = [
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "view.html"));
+  res.sendFile(path.join(__dirname, "home.html"));
 });
-
-app.get("/add", function(req, res) {
-  res.sendFile(path.join(__dirname, "add.html"));
+// Route to a page where the user can book a new reservation.
+app.get("/reserve", function(req, res) {
+  res.sendFile(path.join(__dirname, "reserve.html"));
+});
+// Route to a page with a list of current reservations and the waitlist.
+app.get("/tables", function(req, res) {
+  res.sendFile(path.join(__dirname, "tables.html"));
 });
 
 // Displays all reservations
