@@ -12,29 +12,15 @@ var PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Star Wars Characters (DATA)
+// Data
 // =============================================================
-var characters = [
+var Tables = [
   {
-    routeName: "yoda",
-    name: "Yoda",
-    role: "Jedi Master",
-    age: 900,
-    forcePoints: 2000
-  },
-  {
-    routeName: "darthmaul",
-    name: "Darth Maul",
-    role: "Sith Lord",
-    age: 200,
-    forcePoints: 1200
-  },
-  {
-    routeName: "obiwankenobi",
-    name: "Obi Wan Kenobi",
-    role: "Jedi Master",
-    age: 55,
-    forcePoints: 1350
+    routeName:"",
+    ID: "",
+    Name: "",
+    Email: "",
+    Phone: "",
   }
 ];
 
@@ -50,41 +36,40 @@ app.get("/add", function(req, res) {
   res.sendFile(path.join(__dirname, "add.html"));
 });
 
-// Displays all characters
-app.get("/api/characters", function(req, res) {
-  return res.json(characters);
+// Displays all reservations
+app.get("/api/Tables", function(req, res) {
+  return res.json(Tables);
 });
 
-// Displays a single character, or returns false
-app.get("/api/characters/:character", function(req, res) {
-  var chosen = req.params.character;
+// Displays a single table, or returns false
+app.get("/api/Tables/:Table", function(req, res) {
+  var chosen = req.params.Tables;
 
   console.log(chosen);
 
-  for (var i = 0; i < characters.length; i++) {
-    if (chosen === characters[i].routeName) {
-      return res.json(characters[i]);
+  for (var i = 0; i < Tables.length; i++) {
+    if (chosen === Tables[i].routeName) {
+      return res.json(Tables[i]);
     }
   }
 
   return res.json(false);
 });
 
-// Create New Characters - takes in JSON input
-app.post("/api/characters", function(req, res) {
+// Create New table reservations - takes in JSON input
+app.post("/api/Tables", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
-  var newCharacter = req.body;
+  var newTables = req.body;
 
-  // Using a RegEx Pattern to remove spaces from newCharacter
-  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newCharacter.routeName = newCharacter.name.replace(/\s+/g, "").toLowerCase();
+  // Using a RegEx Pattern to remove spaces from newTable
+  newTables.routeName = newTables.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(newCharacter);
+  console.log(newTables);
 
-  characters.push(newCharacter);
+  Tables.push(newTables);
 
-  res.json(newCharacter);
+  res.json(newTables);
 });
 
 // Starts the server to begin listening
