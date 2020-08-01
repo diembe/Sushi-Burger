@@ -33,11 +33,11 @@ app.get("/", function(req, res) {
 });
 // Route to a page where the user can book a new reservation.
 app.get("/reserve", function(req, res) {
-  res.sendFile(path.join(__dirname, "reserve.html"));
+  res.sendFile(path.join(__dirname, "make.html"));
 });
 // Route to a page with a list of current reservations and the waitlist.
 app.get("/tables", function(req, res) {
-  res.sendFile(path.join(__dirname, "tables.html"));
+  res.sendFile(path.join(__dirname, "view.html"));
 });
 
 // Displays all reservations
