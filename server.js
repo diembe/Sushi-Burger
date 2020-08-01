@@ -24,6 +24,16 @@ var Tables = [
   }
 ];
 
+var Waitlist = [
+  {
+    routeName:"",
+    ID: "",
+    Name: "",
+    Email: "",
+    Phone: "",
+  }
+];
+
 // Routes
 // =============================================================
 
@@ -54,6 +64,20 @@ app.get("/api/Tables/:Table", function(req, res) {
   for (var i = 0; i < Tables.length; i++) {
     if (chosen === Tables[i].routeName) {
       return res.json(Tables[i]);
+    }
+  }
+
+  return res.json(false);
+});
+
+app.get("/api/Tables/:Waitlist", function(req, res) {
+  var chosen = req.params.Waitlist;
+
+  console.log(chosen);
+
+  for (var i = 0; i < Waitlist.length; i++) {
+    if (chosen === Waitlist[i].routeName) {
+      return res.json(Waitlist[i]);
     }
   }
 
