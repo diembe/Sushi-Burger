@@ -16,11 +16,11 @@ app.use(express.json());
 // =============================================================
 var Tables = [
   {
-    routeName:"",
-    ID: "",
-    Name: "",
-    Email: "",
-    Phone: "",
+    routeName:"TEST",
+    ID: "007",
+    Name: "Billy Jean",
+    Email: "mj@neverland.com",
+    Phone: "911",
   }
 ];
 
@@ -57,7 +57,7 @@ app.get("/api/Tables", function(req, res) {
 
 // Displays a single table, or returns false
 app.get("/api/Tables/:Table", function(req, res) {
-  var chosen = req.params.Tables;
+  var chosen = req.params.Table;
 
   console.log(chosen);
 
